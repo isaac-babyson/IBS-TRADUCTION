@@ -3,33 +3,189 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>IBS TRADUCTION PROPRE - Isaac 0840981930 - Badge Admin Direct</title>
+<title>IBS TRADUCTION STABLE - 0840981930 - Admin Direct</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#f0f2f5;display:flex;justify-content:center;font-family:system-ui;color:#111}
 .app{width:100%;max-width:460px;min-height:100vh;background:#fff;display:flex;flex-direction:column;padding-bottom:78px}
-.top{height:60px;background:#0866ff;display:flex;align-items:center;justify-content:space-between;padding:0 12px;color:#fff;position:sticky;top:0;z-index:99}
-.top button{width:40px;height:40px;border-radius:50%;border:none;background:rgba(255,255,255,.2);color:#fff;font-weight:900}
+.top{height:56px;background:#0866ff;display:flex;align-items:center;justify-content:space-between;padding:0 12px;color:#fff;position:sticky;top:0;z-index:99}
+.top button{width:38px;height:38px;border-radius:50%;border:none;background:rgba(255,255,255,.25);color:#fff;font-weight:900}
 .page{display:none;flex:1;flex-direction:column;overflow:auto;background:#f0f2f5}.page.show{display:flex}
-.card{border-radius:12px;padding:14px;background:#fff;border:1px solid #ddd;margin:8px 10px;box-shadow:0 1px 3px rgba(0,0,0,.1)}
-.card.dark{background:#0f1a33;color:#fff;border:none}
-.mic{width:100%;height:56px;border-radius:28px;border:none;background:#0866ff;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px}
+.card{border-radius:12px;padding:14px;background:#fff;border:1px solid #ddd;margin:8px 10px}
+.mic{width:100%;height:56px;border-radius:28px;border:none;background:#0866ff;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center}
 .mic.green{background:#00a400}
 .mic.rec{background:#ff3344}
 .input{width:100%;padding:12px;border-radius:8px;border:1px solid #ddd;background:#fff;color:#111;margin:6px 0}
 .btn{width:100%;padding:12px;border-radius:8px;border:none;background:#0866ff;color:#fff;font-weight:900;margin:6px 0}
-.btn.white{background:#e4e6eb;color:#111}
 .row{padding:14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;cursor:pointer;background:#fff}
 .badge{padding:5px 10px;border-radius:20px;font-size:11px;font-weight:900;background:#0866ff;color:#fff}
-.badge.gold{background:gold;color:#000;border:1px solid #daa520}
-.badge.gray{background:#e4e6eb;color:#65676b}
-.avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#0866ff,#00a400);display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;overflow:hidden;flex-shrink:0}
-.avatar.gold{border:3px solid gold;box-shadow:0 0 10px gold}
+.avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#0866ff,#00a400);display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;overflow:hidden}
+.avatar.gold{border:3px solid gold}
 .nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:460px;background:#fff;border-top:1px solid #ddd;display:flex;justify-content:space-around;padding:8px 0;z-index:99}
-.nav button{background:none;border:none;color:#65676b;font-size:11px;display:flex;flex-direction:column;align-items:center;padding:6px 10px;border-radius:8px}.nav button.on{background:#e7f3ff;color:#0866ff}.nav button span{font-size:22px}
-.verified-badge{display:inline-flex;align-items:center;gap:4px;background:gold;color:#000;padding:3px 8px;border-radius:12px;font-size:10px;font-weight:900;border:1px solid #daa520}
-.verified-badge.admin{background:linear-gradient(135deg,gold,#ffd700);box-shadow:0 0 8px gold}
+.nav button{background:none;border:none;color:#65676b;font-size:11px;display:flex;flex-direction:column;align-items:center;padding:6px 10px}.nav button.on{color:#0866ff}.nav button span{font-size:22px}
+.verified-badge{background:gold;color:#000;padding:4px 10px;border-radius:12px;font-size:10px;font-weight:900;border:1px solid #daa520}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:flex-end;justify-content:center;z-index:999}.modal.show{display:flex}
+.modal-box{width:100%;max-width:460px;background:#fff;border-radius:20px 20px 0 0;padding:16px;max-height:85vh;overflow:auto;color:#111}
 </style>
 </head>
 <body>
-<!-- COLLE TOUT LE RESTE DU CODE QUE JE T'AI GÉNÉRÉ - 41k caractères -->
+<div class="app">
+<div class="top">
+<div style="display:flex;gap:6px"><button onclick="historyBack()">←</button><button onclick="historyNext()">→</button></div>
+<div style="font-weight:900;font-size:13px">IBS 1000+ STABLE</div>
+<div style="display:flex;gap:6px"><button onclick="downApp()">⬇️</button><button onclick="shareApp()">↗️</button></div>
+</div>
+
+<div class="page show" id="p1">
+<div style="padding:10px;background:#fff;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #ddd"><span id="hello" style="font-weight:700;font-size:13px">Bonjour ISAAC ADMIN ★ VÉRIFIÉ DIRECT</span><span class="verified-badge">★ ADMIN VÉRIFIÉ</span></div>
+
+<div class="card" style="border:2px solid #0866ff">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+<b style="font-size:12px">🌍 LANGUES - MODIFIER ICI (Première page comme avant)</b>
+<span style="font-size:11px;color:#0866ff">1000+ langues</span>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+<select id="langOther" class="input" style="margin:0" onchange="changeLangs()"></select>
+<select id="langToOther" class="input" style="margin:0" onchange="changeLangs()"></select>
+<select id="langMe" class="input" style="margin:0" onchange="changeLangs()"></select>
+<select id="langToMe" class="input" style="margin:0" onchange="changeLangs()"></select>
+</div>
+<button class="btn" style="margin-top:8px;background:#00a400" onclick="saveLangs()">💾 SAUVEGARDER LANGUES +10pts - STABLE</button>
+</div>
+
+<div class="card" style="background:linear-gradient(135deg,#0866ff,#00a400);color:#fff;border:none"><div style="font-size:11px;font-weight:800;display:flex;justify-content:space-between"><span>OTHER PERSON</span><span id="fromLang">Auto 1000+</span> → <span id="toLang">Français</span></div><div id="origTop" style="margin-top:10px;font-size:15px;min-height:20px">how are you</div><div id="transTop" style="color:#e0ffe0;margin-top:6px;font-weight:700;min-height:20px"></div><div style="display:flex;gap:8px;margin-top:12px"><button class="mic" id="micTop" onclick="startTop()">🎙️ OTHER PERSON - PARLER</button><button onclick="speakTop()" style="width:56px;border-radius:28px;border:2px solid #fff;background:rgba(255,255,255,.2);color:#fff">🔊</button></div></div>
+
+<div class="card" style="background:#0f1a33;color:#fff;border:none"><div style="font-size:11px;font-weight:800;display:flex;justify-content:space-between;color:#8aa0c8"><span>MOI - ISAAC ADMIN VÉRIFIÉ ★</span><span id="fromLang2">Lingala</span> → <span id="toLang2">English</span></div><div id="origBot" style="margin-top:10px;font-size:15px;min-height:20px">ganaza bien vraiment</div><div id="transBot" style="color:#aef5ff;margin-top:6px;font-weight:700;min-height:20px"></div><div style="display:flex;gap:8px;margin-top:12px"><button class="mic green" id="micBot" onclick="startBot()">🎙️ TIA NA LOBA - MOI</button><button onclick="speakBot()" style="width:56px;border-radius:28px;border:2px solid #fff;background:rgba(255,255,255,.15);color:#fff">🔊</button></div></div>
+
+<div class="card"><b>🎁 Avantages</b>
+<div class="row" onclick="openPoints()"><span>⭐ Points</span><b id="points" style="color:#0866ff">120 /1000pts ▶</b></div>
+<div class="row" onclick="openBadge()"><span>★ Badge (Admin direct, Membres 1000pts)</span><span id="badgePro" class="verified-badge">★ ADMIN VÉRIFIÉ DIRECT</span></div>
+<div class="row" onclick="openParrainage()"><span>🔵 Code Privé Caché</span><b id="refCode" style="color:#0866ff">IBS-**** ▶</b></div>
+<div class="row" onclick="publishCurrent()"><span>📢 Publier traduction</span><b style="color:#00a400">Publier ▶</b></div>
+</div>
+</div>
+
+<div class="page" id="p2"><h3 style="padding:12px;background:#fff">🕘 Historique</h3><div id="hist"></div></div>
+<div class="page" id="p3"><h3 style="padding:12px;background:#fff">🔖 Sauvegardés</h3><div id="save"></div></div>
+<div class="page" id="p4"><div style="background:#fff;padding:12px"><b>👥 Clients - Message Audio Video - Stable</b></div><div id="clientListFB" style="background:#fff"></div><div id="fbFeed"></div></div>
+
+<div class="page" id="p5">
+<h3 style="padding:12px;background:#fff">⚙️ Mon Compte - Modifier Profil</h3>
+<div class="card" style="text-align:center;border:2px solid gold">
+<div id="profileAvatar" class="avatar gold" style="width:96px;height:96px;font-size:34px;margin:0 auto">IB</div>
+<input type="file" id="photoInput" accept="image/*" style="display:none" onchange="uploadPhoto(this)">
+<button onclick="document.getElementById('photoInput').click()" style="margin-top:12px;padding:10px 16px;border-radius:20px;border:none;background:#0866ff;color:#fff;font-weight:900">📸 Changer Photo +20pts</button>
+<h3 id="profileName" style="margin-top:12px">ISAAC BABYSON GUY <span class="verified-badge">★ ADMIN VÉRIFIÉ DIRECT</span></h3>
+<p id="badgeStatus" style="font-size:12px;color:#000;font-weight:900;margin-top:8px;background:gold;padding:6px 12px;border-radius:20px;display:inline-block">★ ADMIN VÉRIFIÉ DIRECT - 0840981930 - Toujours</p>
+<p id="profileCode" style="font-size:12px;color:#0866ff;font-weight:900;margin-top:8px">Code: IBS-**** (touch pour révéler)</p>
+<div style="margin-top:12px;display:flex;gap:8px"><input id="editNameInput" class="input" placeholder="Modifier nom" style="flex:1"><button onclick="saveProfileName()" class="btn" style="width:auto">💾 Sauver</button></div>
+</div>
+</div>
+
+<div class="nav">
+<button id="b1" class="on" onclick="stableShow(1)"><span>🌐</span>Trad</button>
+<button id="b2" onclick="stableShow(2)"><span>🕘</span>Hist</button>
+<button id="b3" onclick="stableShow(3)"><span>🔖</span>Sauvé</button>
+<button id="b4" onclick="stableShow(4)"><span>👥</span>Clients</button>
+<button id="b5" onclick="stableShow(5)"><span>⚙️</span>Moi</button>
+</div>
+</div>
+
+<div class="modal" id="modal" onclick="closeModal()"><div class="modal-box" id="modalBox" onclick="event.stopPropagation()"></div></div>
+
+<script>
+var curPage=1;
+var navHistory=[];
+var currentUser={name:"ISAAC BABYSON GUY",phone:"0840981930",points:120,code:"IBS-1930-66",avatar:"IB",isAdmin:true,langs:{other:"auto",me:"ln",toOther:"fr",toMe:"en"}};
+var BADGE_REQUIRED=1000;
+var ALL_LANGS=[["auto","🌍 Auto 1000+ langues"],["af","Afrikaans"],["ar","Arabe"],["en","English"],["fr","Français / Lingala"],["sw","Swahili Goma"],["ln","Lingala - Goma"],["de","Allemand"],["es","Espagnol"],["it","Italien"],["pt","Portugais"],["ru","Russe"],["zh","Chinois"],["ja","Japonais"],["ko","Coréen"],["hi","Hindi"],["ar","Arabe"],["tr","Turc"],["nl","Néerlandais"],["pl","Polonais"],["pt","Portugais"],["vi","Vietnamien"],["th","Thaï"],["id","Indonésien"],["ms","Malais"],["tl","Philippin"],["bn","Bengali"],["ur","Ourdou"],["fa","Persan"],["he","Hébreu"],["el","Grec"],["hu","Hongrois"],["cs","Tchèque"],["ro","Roumain"],["uk","Ukrainien"],["bg","Bulgare"],["hr","Croate"],["sr","Serbe"],["sk","Slovaque"],["sl","Slovène"],["da","Danois"],["fi","Finnois"],["no","Norvégien"],["sv","Suédois"],["lt","Lituanien"],["lv","Letton"],["et","Estonien"],["mt","Maltais"],["is","Islandais"],["ga","Irlandais"],["cy","Gallois"],["eu","Basque"],["ca","Catalan"],["gl","Galicien"],["lua","Tshiluba"],["kg","Kikongo"],["rw","Kinyarwanda"]];
+
+function stableShow(n){
+if(n===curPage) return;
+navHistory.push(curPage);
+curPage=n;
+for(var i=1;i<=5;i++){document.getElementById('p'+i).classList.remove('show');document.getElementById('b'+i).classList.remove('on');}
+document.getElementById('p'+n).classList.add('show');
+document.getElementById('b'+n).classList.add('on');
+if(n==4) renderFB();
+}
+function historyBack(){
+if(navHistory.length>0){
+var prev=navHistory.pop();
+curPage=prev;
+for(var i=1;i<=5;i++){document.getElementById('p'+i).classList.remove('show');document.getElementById('b'+i).classList.remove('on');}
+document.getElementById('p'+prev).classList.add('show');
+document.getElementById('b'+prev).classList.add('on');
+}
+}
+function historyNext(){}
+function isAdminUser(){return currentUser.phone=="0840981930" || currentUser.name.toUpperCase().includes("ISAAC") || currentUser.isAdmin;}
+function populateLangs(){
+["langOther","langMe","langToOther","langToMe"].forEach(function(id){
+var sel=document.getElementById(id);sel.innerHTML="";
+ALL_LANGS.forEach(function(l){var opt=document.createElement('option');opt.value=l[0];opt.textContent=l[1];sel.appendChild(opt);});
+});
+document.getElementById('langOther').value='auto';
+document.getElementById('langMe').value='ln';
+document.getElementById('langToOther').value='fr';
+document.getElementById('langToMe').value='en';
+}
+function changeLangs(){
+document.getElementById('fromLang').innerText=document.getElementById('langOther').value;
+document.getElementById('toLang').innerText=document.getElementById('langToOther').value;
+document.getElementById('fromLang2').innerText=document.getElementById('langMe').value;
+document.getElementById('toLang2').innerText=document.getElementById('langToMe').value;
+}
+function saveLangs(){
+var o=document.getElementById('langOther').value;
+var m=document.getElementById('langMe').value;
+var toO=document.getElementById('langToOther').value;
+var toM=document.getElementById('langToMe').value;
+currentUser.langs={other:o,me:m,toOther:toO,toMe:toM};
+localStorage.setItem('ibs_current',JSON.stringify(currentUser));
+addPoints(10);
+alert('✅ Langues 1000+ sauvegardées sur première page ! Stable ! +10pts');
+}
+function downApp(){var h=document.documentElement.outerHTML;var b=new Blob([h],{type:'text/html'});var u=URL.createObjectURL(b);var a=document.createElement('a');a.href=u;a.download='IBS_STABLE.html';a.click();}
+function shareApp(){var txt=encodeURIComponent('🌍 IBS 1000+ STABLE - Admin Isaac Badge Direct - https://isaac-babyson.github.io/IBS-TRADUCTION/');window.open('https://wa.me/?text='+txt,'_blank');addPoints(5);}
+function addPoints(n){currentUser.points+=n;localStorage.setItem('ibs_current',JSON.stringify(currentUser));updateBadgeUI();}
+function updateBadgeUI(){
+var pts=currentUser.points;
+var isAdmin=isAdminUser();
+var badgeEl=document.getElementById('badgePro');
+document.getElementById('points').innerText=pts+' /'+BADGE_REQUIRED+'pts ▶';
+if(isAdmin){badgeEl.innerHTML='★ ADMIN VÉRIFIÉ DIRECT';badgeEl.className='verified-badge';document.getElementById('hello').innerText='Bonjour ISAAC ADMIN ★ VÉRIFIÉ DIRECT • '+pts+'pts • STABLE';}
+}
+function openModal(h){document.getElementById('modalBox').innerHTML=h;document.getElementById('modal').classList.add('show');}
+function closeModal(){document.getElementById('modal').classList.remove('show');}
+function toggleCode(){var codeEl=document.getElementById('profileCode');var refEl=document.getElementById('refCode');if(codeEl.innerText.includes('****')){codeEl.innerText='Code privé: '+currentUser.code+' (visible seulement par toi)';refEl.innerText=currentUser.code+' ▶';}else{codeEl.innerText='Code privé: IBS-**** (touch pour révéler)';refEl.innerText='IBS-**** ▶';}}
+function openPoints(){openModal('<h3 style="color:#111">⭐ Points - Stable</h3><p style="color:#111;margin-top:10px">Admin Isaac badge direct toujours ★<br>Membres 1000pts pour badge ★<br>App stable, pages ne se désactivent plus seules.</p><button class=btn onclick="closeModal()">Fermer</button>');}
+function openBadge(){openModal('<h3 style="color:#111">★ BADGE ADMIN VÉRIFIÉ DIRECT</h3><p style="color:#111;margin-top:10px">Toi Isaac 0840981930, badge direct toujours ★<br>Nouveaux membres 1000pts requis ★<br>App stable maintenant, ne se désactive plus.</p><button class=btn style="background:gold;color:#000" onclick="closeModal()">★ Je suis Admin Vérifié</button>');}
+function openParrainage(){openModal('<h3 style="color:#111">🔵 Code Privé Caché</h3><p style="color:#111">Code caché comme Facebook. Stable.</p><button class=btn style="background:#25D366;color:#fff" onclick="shareApp()">📲 Partager +50pts</button>');}
+function saveProfileName(){var newName=document.getElementById('editNameInput').value.trim();if(!newName){alert('Écris nom');return;}currentUser.name=newName;localStorage.setItem('ibs_current',JSON.stringify(currentUser));document.getElementById('profileName').innerHTML=newName+' <span class="verified-badge">★ ADMIN VÉRIFIÉ DIRECT</span>';alert('✅ Nom modifié - Stable +5pts');addPoints(5);}
+function renderFB(){document.getElementById('clientListFB').innerHTML='<div style="background:#fff;padding:14px;border-radius:12px;margin:8px;border:1px solid #ddd"><b style="color:#111">Clients - Badge: Admin direct ★, Membres 1000pts ★</b><br><small style="color:#65676b">App stable - pages ne se désactivent plus seules. Message, Audio, Video comme Facebook mais stable.</small></div>';}
+function publishCurrent(){openModal('<h3 style="color:#111">📢 Publier</h3><textarea id=postText class=input style="min-height:100px;background:#fff;color:#111" placeholder="Que publier ?"></textarea><button class=btn style="background:#0866ff" onclick="closeModal();alert(\'Publié +10pts - Stable\');addPoints(10)">Publier +10pts</button>');}
+async function trans(txt,to){try{var url='https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl='+(to=='auto'?'en':to)+'&dt=t&q='+encodeURIComponent(txt);var r=await fetch(url);var j=await r.json();return j[0].map(function(x){return x[0];}).join('');}catch(e){return txt;}}
+function speak(t,l){try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang=l;speechSynthesis.speak(u);}catch(e){}}
+function speakTop(){speak(document.getElementById('transTop').innerText,document.getElementById('langToOther').value||'fr');}
+function speakBot(){speak(document.getElementById('transBot').innerText,document.getElementById('langToMe').value||'en');}
+function listen(lang,cb,onEnd){var SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){alert('Chrome');return;}var rec=new SR();rec.lang=lang=='auto'?'en-US':lang;rec.onresult=function(e){cb(e.results[0][0].transcript);};rec.onend=function(){onEnd();};rec.onerror=function(){onEnd();};rec.start();}
+function startTop(){var b=document.getElementById('micTop');b.classList.add('rec');b.innerText='🔴 ÉCOUTE...';var l=document.getElementById('langOther').value;var toL=document.getElementById('langToOther').value;listen(l,function(txt){document.getElementById('origTop').innerText=txt;trans(txt,toL).then(function(tr){document.getElementById('transTop').innerText=tr;speak(tr,toL);addPoints(5);});},function(){b.classList.remove('rec');b.innerText='🎙️ OTHER PERSON - PARLER';});}
+function startBot(){var b=document.getElementById('micBot');b.classList.add('rec');b.innerText='🔴 NAZO YOKA...';var l=document.getElementById('langMe').value;var toL=document.getElementById('langToMe').value;listen(l,function(txt){document.getElementById('origBot').innerText=txt;trans(txt,toL).then(function(tr){document.getElementById('transBot').innerText=tr;speak(tr,toL);addPoints(5);});},function(){b.classList.remove('rec');b.innerText='🎙️ TIA NA LOBA - MOI';});}
+function uploadPhoto(input){var file=input.files[0];if(!file) return;var r=new FileReader();r.onload=function(e){var b=e.target.result;document.getElementById('profileAvatar').innerHTML='<img src="'+b+'" style="width:100%;height:100%;object-fit:cover">';currentUser.photo=b;localStorage.setItem('ibs_current',JSON.stringify(currentUser));addPoints(20);alert('Photo modifiée - Stable +20pts');};r.readAsDataURL(file);}
+window.onload=function(){
+populateLangs();
+var saved=localStorage.getItem('ibs_current');if(saved){try{var tmp=JSON.parse(saved);currentUser.name=tmp.name||currentUser.name;currentUser.phone=tmp.phone||currentUser.phone;currentUser.points=tmp.points||120;currentUser.code=tmp.code||currentUser.code;currentUser.photo=tmp.photo||null;currentUser.langs=tmp.langs||currentUser.langs;if(currentUser.phone=="0840981930" || currentUser.name.toUpperCase().includes("ISAAC")) currentUser.isAdmin=true;}catch(e){}}
+updateBadgeUI();
+if(currentUser.langs){
+document.getElementById('langOther').value=currentUser.langs.other||'auto';
+document.getElementById('langMe').value=currentUser.langs.me||'ln';
+document.getElementById('langToOther').value=currentUser.langs.toOther||'fr';
+document.getElementById('langToMe').value=currentUser.langs.toMe||'en';
+changeLangs();
+}
+renderFB();
+};
+</script>
+</body>
+  </html>
