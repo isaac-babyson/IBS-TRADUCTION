@@ -4,222 +4,109 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0a1430">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<link rel="manifest" href="manifest.json">
-<link rel="icon" type="image/png" sizes="192x192" href="icons/ibs-192.png">
-<meta name="description" content="IBS TRADUCTION — prototype de conversation et traduction vocale créé par Isaac BabySon.">
-<title>IBS TRADUCTION — Isaac BabySon</title>
+<title>IBS TRADUCTION - Isaac BabySon | 1000+ PRO</title>
 <style>
-:root{color-scheme:dark;--bg:#050811;--panel:#111d3a;--blue:#1769e8;--green:#16834b;--text:#fff;--muted:#b8c8e8}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,sans-serif}
-.app{width:100%;max-width:460px;margin:auto;background:#0a1430;min-height:100vh;display:flex;flex-direction:column}
-.top{height:60px;background:#0f1a33;display:flex;align-items:center;justify-content:space-between;gap:6px;padding:0 8px;border-bottom:2px solid #2f6fdc;position:sticky;top:0;z-index:10}
-.top button{width:37px;height:37px;border-radius:50%;border:2px solid #6cf;background:#1e3a8a;color:white;font-size:19px;font-weight:900}
-.page{display:none;flex:1;flex-direction:column;padding:12px;padding-bottom:88px}.page.show{display:flex}
-.card{border-radius:16px;padding:13px;margin:6px 0;background:var(--panel);border:1px solid #ffffff20}
-.input,.select{width:100%;padding:12px;border-radius:10px;border:1px solid #ffffff30;background:#17264a;color:white;margin:5px 0;font:inherit}
-.btn,.mic{width:100%;padding:13px;border-radius:12px;border:none;font-weight:850;margin:6px 0;font:inherit;cursor:pointer}
-.btn{background:white;color:#111}.mic{min-height:54px;border-radius:26px;border:2px solid #6cf;background:#1e3a8a;color:white;font-weight:900}
-.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:460px;background:#0f1a33;border-top:2px solid #2f6fdc;display:flex;justify-content:space-around;padding:6px 0;z-index:10}
-.nav button{background:none;border:none;color:#9aafd7;font-size:11px;display:flex;flex-direction:column;align-items:center;padding:6px 8px;border-radius:10px}.nav button.on{background:#1e3a8a;color:white}.nav span{font-size:21px}
-.logo{width:76px;height:76px;border-radius:20px;background:linear-gradient(135deg,#2f6fdc,#2d7d5a);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:900;margin:auto}
-.small{font-size:12px;color:var(--muted);line-height:1.5}.status{font-size:12px;color:#a9dfff;min-height:18px;margin-top:6px;line-height:1.4}
-.result{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.45;margin-top:8px}
-.row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 0;border-bottom:1px solid #ffffff15}
-.pill{display:inline-block;border-radius:999px;padding:4px 9px;background:#1e3a8a;font-size:11px}
-.green{background:#17683f;color:white}.blue{background:#0b63ff;color:white}.red{background:#b91c1c;color:white}
-.mode{display:flex;gap:6px}.mode button{flex:1;padding:10px 6px;border-radius:10px;border:1px solid #ffffff30;background:#111d3a;color:white;font-weight:800}.mode button.selected{background:#1e3a8a;border-color:#75baff}
-[hidden]{display:none!important}
+:root{color-scheme:dark;--bg:#050811;--card:#111d3a;--blue:#2f6fdc}
+*{box-sizing:border-box;margin:0;padding:0}body{margin:0;background:var(--bg);display:flex;justify-content:center;font-family:system-ui;color:#fff;min-height:100vh}
+.app{width:100%;max-width:460px;background:#0a1430;min-height:100vh;display:flex;flex-direction:column;padding-bottom:76px}
+.top{height:60px;background:#0f1a33;display:flex;align-items:center;justify-content:space-between;padding:0 10px;border-bottom:2px solid #2f6fdc;position:sticky;top:0;z-index:99}
+.top button{width:42px;height:42px;border-radius:50%;border:2px solid #6cf;background:#1e3a8a;color:#fff;font-size:18px;font-weight:900}
+.page{display:none;flex:1;flex-direction:column;padding:12px;gap:8px;overflow:auto}.page.show{display:flex}
+.card{border-radius:16px;padding:12px;background:var(--card);border:1px solid rgba(255,255,255,.12)}
+.mic{width:100%;height:56px;border-radius:28px;border:2px solid #6cf;background:#1e3a8a;color:#fff;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.mic.rec{background:#ff3344;animation:pulse 1s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,51,68,.7)}70%{box-shadow:0 0 0 12px rgba(255,51,68,0)}100%{box-shadow:0 0 0 0 rgba(255,51,68,0)}}
+.input{width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.07);color:#fff;margin:6px 0}
+.btn{width:100%;padding:13px;border-radius:12px;border:none;background:#fff;color:#111;font-weight:900;margin:6px 0;cursor:pointer}
+.row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:13px}
+.badge{padding:4px 9px;border-radius:20px;font-size:10px;font-weight:900;background:var(--blue);color:#fff}
+.avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#2f6fdc,#6cf);display:flex;align-items:center;justify-content:center;font-weight:900;overflow:hidden}
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:460px;background:#0f1a33;border-top:2px solid #2f6fdc;display:flex;justify-content:space-around;padding:8px 0;z-index:99}
+.nav button{background:none;border:none;color:#8aa0c8;font-size:11px;display:flex;flex-direction:column;align-items:center;padding:6px 10px;border-radius:12px}.nav button.on{background:#1e3a8a;color:#fff}.nav button span{font-size:22px}
+.logo{width:92px;height:92px;border-radius:22px;background:linear-gradient(135deg,#2f6fdc,#2d7d5a);display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:900}
+.splash{background:radial-gradient(120% at 50% 0%,#1e3a8a 0%,#0a1430 60%,#050811 100%);border-radius:18px;padding:16px;text-align:center;border:1px solid rgba(255,255,255,.12)}
+.dot{width:8px;height:8px;border-radius:50%;background:#2eff7a;display:inline-block}
 </style>
 </head>
 <body>
 <div class="app">
-<header class="top">
-  <div style="display:flex;gap:4px"><button aria-label="Retour" onclick="goBack()">←</button><button aria-label="Avancer" onclick="goNext()">→</button></div>
-  <div style="font-size:14px;font-weight:900">IBS TRADUCTION</div>
-  <div style="display:flex;gap:4px"><button aria-label="Télécharger le fichier" onclick="downloadHtml()">⬇</button><button aria-label="Partager" onclick="shareApp()">↗</button></div>
-</header>
-
-<section class="page show" id="p1">
-  <div id="welcome" class="card" style="text-align:center;background:radial-gradient(at top,#1e3a8a,#050811)">
-    <div class="logo">IBS</div><h2 style="margin:10px 0 4px">IBS TRADUCTION</h2>
-    <p style="color:#7ab3ff;font-weight:800">MODE PROFESSIONNEL • PROTOTYPE</p>
-    <p class="small">Isaac BabySon • RDC</p>
-    <input class="input" id="profileName" placeholder="Ton nom (facultatif)" autocomplete="name">
-    <button class="btn blue" onclick="saveProfile()">CONTINUER</button>
-  </div>
-
-  <div class="card">
-    <b>🌐 Choisir les langues</b>
-    <label class="small" for="langA" style="display:block;margin-top:8px">Langue de la personne A</label><select id="langA" class="select"></select>
-    <label class="small" for="langB" style="display:block;margin-top:6px">Langue de la personne B</label><select id="langB" class="select"></select>
-    <button class="btn" onclick="swapLanguages()">🔄 Inverser les langues</button>
-    <p class="small">La disponibilité de la reconnaissance vocale dépend du navigateur et de la langue.</p>
-  </div>
-
-  <div class="card">
-    <b>🎛️ Mode de conversation</b>
-    <div class="mode" style="margin-top:10px">
-      <button id="modeManualBtn" class="selected" onclick="setMode('manual')">🎙️ Deux micros</button>
-      <button id="modeAutoBtn" onclick="setMode('auto')">🔄 Conversation</button>
-    </div>
-    <p id="modeDescription" class="small" style="margin-top:8px">Chaque personne touche son bouton pour parler. La traduction est affichée puis lue si la voix cible est disponible.</p>
-  </div>
-
-  <div id="manualMode">
-    <div class="card" style="background:linear-gradient(135deg,#245ec5,#173a79)">
-      <span class="pill">PERSONNE A</span><h3 style="margin-top:8px">🔵 AUTRE PERSONNE</h3>
-      <p class="small">Parle dans la langue A → traduction en langue B.</p>
-      <div id="aOriginal" class="result">Le texte reconnu apparaîtra ici.</div><div id="aTranslation" class="result" style="color:#b7f5ff"></div>
-      <button id="micA" class="mic" onclick="startListening('A')">🎙️ PERSONNE A — PARLER</button>
-      <button class="btn" onclick="readResult('aTranslation','langB')">🔊 Écouter la traduction</button><div id="statusA" class="status" aria-live="polite"></div>
-    </div>
-    <div class="card" style="background:linear-gradient(135deg,#216846,#123d2a)">
-      <span class="pill">PERSONNE B</span><h3 style="margin-top:8px">🟢 MOI / AUTRE PERSONNE</h3>
-      <p class="small">Parle dans la langue B → traduction en langue A.</p>
-      <div id="bOriginal" class="result">Le texte reconnu apparaîtra ici.</div><div id="bTranslation" class="result" style="color:#b7f5ff"></div>
-      <button id="micB" class="mic" style="background:#14532d;border-color:#6f6" onclick="startListening('B')">🎙️ PERSONNE B — PARLER</button>
-      <button class="btn" onclick="readResult('bTranslation','langA')">🔊 Écouter la traduction</button><div id="statusB" class="status" aria-live="polite"></div>
-    </div>
-  </div>
-
-  <div id="autoMode" hidden>
-    <div class="card">
-      <h3>🔄 Conversation guidée</h3>
-      <p class="small" style="margin-top:6px">L’application écoute une seule phrase, la traduit et lit le résultat. Ensuite, elle te demande de lancer l’écoute de l’autre personne. Cette version ne garde pas le microphone ouvert en permanence.</p>
-      <div class="row"><span>Prochaine personne</span><b id="nextSpeaker">A</b></div>
-      <div id="autoOriginal" class="result">Commence par la personne A.</div><div id="autoTranslation" class="result" style="color:#b7f5ff"></div>
-      <button id="autoMic" class="mic" onclick="startAuto()">🎙️ DÉMARRER LA CONVERSATION</button>
-      <button class="btn" onclick="toggleAutoSpeaker()">Changer la personne qui parle</button>
-      <button class="btn red" onclick="stopAll()">⏹ Arrêter la conversation</button>
-      <div id="statusAuto" class="status" aria-live="polite"></div>
-    </div>
-  </div>
-  <p class="small" style="padding:4px">Connexion Internet requise. Le microphone peut exiger un site HTTPS. Ne vous fiez pas à une traduction automatique pour des décisions médicales, juridiques ou urgentes.</p>
-</section>
-
-<section class="page" id="p2"><h3>🕘 Historique</h3><div id="historyList"></div><button class="btn red" onclick="clearHistory()">Vider l’historique</button></section>
-<section class="page" id="p3"><h3>🔖 Favoris</h3><div id="savedList"></div><button class="btn blue" onclick="saveLast()">Sauvegarder la dernière traduction</button><button class="btn red" onclick="clearSaved()">Vider les favoris</button></section>
-<section class="page" id="p4">
-  <h3>👥 À propos de IBS TRADUCTION</h3>
-  <div class="card"><h4>Parler pour se comprendre</h4><p class="small" style="margin-top:8px">Un prototype Web pour tester la reconnaissance vocale, la traduction et la lecture à voix haute dans les conversations bilingues.</p><button class="btn green" onclick="contactWhatsApp()">📲 Contacter via WhatsApp</button></div>
-  <div class="card"><b>Limites à connaître</b><p class="small" style="margin-top:8px">Ce fichier n’est pas encore une application Android APK. Le service de traduction utilisé dans cette démonstration n’est pas une API garantie pour un usage commercial. Les langues de reconnaissance et de synthèse vocale varient selon l’appareil.</p></div>
-</section>
-<section class="page" id="p5">
-  <h3>⚙️ Paramètres</h3>
-  <div class="card"><b>👤 Profil</b><p id="profileInfo" class="small" style="margin-top:8px">Aucun nom enregistré.</p><button class="btn" onclick="editProfile()">Modifier le nom</button></div>
-  <div class="card"><b>⬇️ Fichier et partage</b><button class="btn blue" onclick="downloadHtml()">⬇ Télécharger le fichier HTML</button><button class="btn green" onclick="shareApp()">↗ Partager l’application</button><p class="small">Le fichier HTML se télécharge sur ton appareil. Pour partager un lien utilisable par tout le monde, il faut d’abord héberger l’application sur un site HTTPS.</p></div>
-  <div class="card"><b>🔐 Données locales</b><p class="small" style="margin-top:8px">Le profil, l’historique et les favoris sont conservés dans le navigateur de cet appareil. Le texte envoyé au service de traduction passe par Internet. Évite les informations confidentielles.</p><button class="btn red" onclick="clearAllData()">Effacer les données locales</button></div>
-  <div class="card"><b>IBS TRADUCTION • Prototype 2026</b><p class="small" style="margin-top:6px">Créateur : Isaac BabySon • RDC</p></div>
-</section>
-
-<nav class="nav" aria-label="Navigation principale">
-<button id="n1" class="on" onclick="showPage(1)"><span>🌐</span>Trad</button><button id="n2" onclick="showPage(2)"><span>🕘</span>Hist</button><button id="n3" onclick="showPage(3)"><span>🔖</span>Favoris</button><button id="n4" onclick="showPage(4)"><span>👥</span>Infos</button><button id="n5" onclick="showPage(5)"><span>⚙️</span>Moi</button>
-</nav>
+<div class="top">
+<div style="display:flex;gap:6px"><button onclick="goBack()">←</button><button onclick="goNext()">→</button></div>
+<div style="font-weight:900;font-size:11px">IBS 1000+ • <span><span class="dot"></span> En ligne</span></div>
+<div style="display:flex;gap:6px"><button onclick="downApp()">⬇️</button><button onclick="shareApp()">↗️</button></div>
 </div>
 
+<div class="page show" id="p1">
+<div id="splash" class="splash">
+<div class="logo" style="margin:0 auto">IBS</div>
+<h2>IBS TRADUCTION</h2>
+<p style="color:#7ab3ff;font-weight:800">1000+ LANGUES • PRO • COMPTES</p>
+<div id="authBox" style="margin-top:14px;text-align:left;background:rgba(255,255,255,.06);padding:12px;border-radius:14px">
+<div style="display:flex;gap:8px"><button id="tabLogin" class="btn" style="background:#2f6fdc;color:#fff;flex:1;font-size:12px" onclick="setTab('login')">Connexion</button><button id="tabReg" class="btn" style="background:rgba(255,255,255,.12);color:#fff;flex:1;font-size:12px" onclick="setTab('reg')">Créer Compte</button></div>
+<div id="loginForm" style="margin-top:8px"><input id="lPhone" class="input" placeholder="Numéro WhatsApp (+243...)"><input id="lPass" class="input" type="password" placeholder="Mot de passe"><button class="btn" style="background:#0b63ff;color:#fff" onclick="loginUser()">SE CONNECTER →</button></div>
+<div id="regForm" style="display:none;margin-top:8px"><input id="rName" class="input" placeholder="Nom complet"><input id="rPhone" class="input" placeholder="Numéro WhatsApp"><input id="rPass" class="input" type="password" placeholder="Mot de passe"><select id="rLang" class="input" style="background:#fff;color:#111;font-weight:700"><option>🇨🇩 Français / Lingala</option><option>🇹🇿 Swahili (Goma)</option><option>🇺🇸 English</option><option>🇮🇳 Hindi</option><option>🇸🇦 Arabe</option><option>🇨🇳 Chinois</option><option>🌍 Auto 1000+ langues</option></select><button class="btn" style="background:#25D366;color:#fff" onclick="registerUser()">CRÉER COMPTE ✨ +100pts</button></div>
+</div>
+</div>
+<div style="font-size:11px;display:flex;justify-content:space-between;padding:2px 4px"><span id="hello" style="font-weight:700">Bienvenue • Invite</span><span style="display:flex;gap:6px"><span class="badge">1000+ LANGUES</span><span class="badge" style="background:#2d7d5a">PRO</span></span></div>
+<div class="card" style="background:linear-gradient(135deg,#2f6fdc,#1e4aa0)"><div style="font-size:10px;font-weight:800;display:flex;justify-content:space-between"><span>OTHER PERSON</span><span id="detTop">Auto → Français</span></div><div id="origTop" style="margin-top:8px;font-size:14px;min-height:18px">Touche micro bleu pour parler...</div><div id="transTop" style="color:#aef5ff;margin-top:6px;font-weight:700;min-height:18px"></div><div style="display:flex;gap:8px;margin-top:10px"><button class="mic" id="micTop" onclick="startTop()">🎙️ OTHER PERSON - PARLER</button><button onclick="speakTop()" style="width:56px;border-radius:28px;border:2px solid #fff;background:rgba(255,255,255,.15);color:#fff">🔊</button></div></div>
+<div class="card" style="background:linear-gradient(135deg,#2d7d5a,#18402f)"><div style="font-size:10px;font-weight:800;display:flex;justify-content:space-between"><span>MOI</span><span id="detBot">Lingala → English</span></div><div id="origBot" style="margin-top:8px;font-size:14px;min-height:18px">Mbote ! Naza awa</div><div id="transBot" style="color:#afffca;margin-top:6px;font-weight:700;min-height:18px"></div><div style="display:flex;gap:8px;margin-top:10px"><button class="mic" id="micBot" onclick="startBot()" style="border-color:#6aff9a">🎙️ TIA NA LOBA - MOI</button><button onclick="speakBot()" style="width:56px;border-radius:28px;border:2px solid #fff;background:rgba(255,255,255,.15);color:#fff">🔊</button></div></div>
+<div class="card" style="border:1.5px solid #2f6fdc"><b style="font-size:13px">🎁 Avantages PRO</b><div class="row"><span>⭐ Points Fidélité</span><b id="points">0 pts</b></div><div class="row"><span>👑 Badge Vérifié</span><span id="badgePro" class="badge" style="background:#6b7280">À débloquer</span></div><div class="row"><span>🔵 Code Parrainage</span><b id="refCode">IBS-XXXX</b></div><div class="row"><span>📲 Partage gagne 5pts</span><button onclick="shareApp()" style="padding:6px 10px;border-radius:8px;border:none;background:#25D366;color:#fff;font-weight:800">Parrainer</button></div></div>
+</div>
+
+<div class="page" id="p2"><h3>🕘 Historique</h3><div id="hist" style="margin-top:10px"><div class="card" style="font-size:12px;color:#8aa0c8">Aucune traduction encore</div></div></div>
+<div class="page" id="p3"><h3>🔖 Sauvegardés</h3><div id="save" style="margin-top:10px"><div class="card" style="font-size:12px;color:#8aa0c8">Aucun</div></div><button class="btn" style="background:#0b63ff;color:#fff" onclick="saveLast()">➕ SAUVEGARDER +10pts</button></div>
+<div class="page" id="p4"><h3>👥 Clients</h3><div class="card"><b>📊 Clients (<span id="clientCount">0</span>)</b><div id="clientList" style="margin-top:8px"></div></div></div>
+
+<div class="page" id="p5">
+<h3>⚙️ Mon Compte PRO - MOI</h3>
+<div class="card" style="text-align:center;border:1.5px solid #2f6fdc">
+<div id="profileAvatar" class="avatar" style="width:96px;height:96px;font-size:34px;margin:0 auto;border:3px solid #2f6fdc">IB</div>
+<input type="file" id="photoInput" accept="image/*" style="display:none" onchange="uploadPhoto(this)">
+<button onclick="document.getElementById('photoInput').click()" style="margin-top:10px;padding:9px 14px;border-radius:12px;border:2px solid #2f6fdc;background:#fff;color:#111;font-weight:900">📸 Changer Photo de Profil</button>
+<h3 id="profileName" style="margin-top:10px">Invité</h3>
+<p id="profilePhone" style="font-size:12px;color:#8aa0c8">Non connecté</p>
+<p id="profileCode" style="font-size:12px;color:#6cf;font-weight:900;margin-top:6px;background:rgba(47,111,220,.15);padding:6px 10px;border-radius:20px;display:inline-block"></p>
+<div style="display:flex;gap:8px;margin-top:12px;justify-content:center"><span class="badge"><span class="dot"></span> En ligne</span><span class="badge" style="background:#2d7d5a">1000+ Langues</span><span id="profileBadge" class="badge" style="background:#ff8c00">Pro</span></div>
+<div style="display:flex;gap:8px;margin-top:14px"><button class="btn" style="background:rgba(255,255,255,.1);color:#fff;flex:1" onclick="exportAccount()">💾 Exporter .IBS</button><button class="btn" style="background:rgba(255,255,255,.1);color:#fff;flex:1" onclick="document.getElementById('importInput').click()">📥 Importer</button></div>
+<input type="file" id="importInput" accept=".ibs,.json" style="display:none" onchange="importAccount(this)">
+</div>
+<div class="card"><b>🔐 Mon Compte</b><div class="row"><span>Nom</span><b id="accName">-</b></div><div class="row"><span>WhatsApp</span><b id="accPhone">-</b></div><div class="row"><span>Code</span><b id="accCode">-</b></div><div class="row"><span>Points</span><b id="accPoints">0 pts</b></div><button class="btn" style="background:#ff3344;color:#fff" onclick="logout()">🚪 Déconnexion</button></div>
+<div class="card" style="border:2px solid #2f6fdc"><b>⬇️ ↗️ PRO</b><div class="row"><span>⬇️ Télécharger</span><button onclick="downApp()" style="padding:8px 14px;border-radius:10px;border:none;background:#0b63ff;color:#fff;font-weight:900">⬇️ TÉLÉCHARGER</button></div><div class="row"><span>↗️ Partager</span><button onclick="shareApp()" style="padding:8px 14px;border-radius:10px;border:none;background:#25D366;color:#fff;font-weight:900">↗️ PARTAGER</button></div></div>
+</div>
+
+<div class="nav"><button id="b1" class="on" onclick="show(1)"><span>🌐</span>Trad</button><button id="b2" onclick="show(2)"><span>🕘</span>Hist</button><button id="b3" onclick="show(3)"><span>🔖</span>Sauvé</button><button id="b4" onclick="show(4)"><span>👥</span>Clients</button><button id="b5" onclick="show(5)"><span>⚙️</span>Moi</button></div>
+</div>
 <script>
-'use strict';
-const LANGS=[
-{name:'Français',translate:'fr',speech:'fr-FR'},
-{name:'English',translate:'en',speech:'en-US'},
-{name:'Kiswahili',translate:'sw',speech:'sw-KE'},
-{name:'Lingala',translate:'ln',speech:'fr-FR'},
-{name:'Kinyarwanda',translate:'rw',speech:'rw-RW'},
-{name:'Español',translate:'es',speech:'es-ES'},
-{name:'Português',translate:'pt',speech:'pt-PT'},
-{name:'Deutsch',translate:'de',speech:'de-DE'},
-{name:'Italiano',translate:'it',speech:'it-IT'},
-{name:'العربية',translate:'ar',speech:'ar-SA'},
-{name:'हिन्दी',translate:'hi',speech:'hi-IN'},
-{name:'中文',translate:'zh-CN',speech:'zh-CN'},
-{name:'日本語',translate:'ja',speech:'ja-JP'},
-{name:'한국어',translate:'ko',speech:'ko-KR'},
-{name:'Türkçe',translate:'tr',speech:'tr-TR'},
-{name:'Русский',translate:'ru',speech:'ru-RU'},
-{name:'Nederlands',translate:'nl',speech:'nl-NL'},
-{name:'ไทย',translate:'th',speech:'th-TH'},
-{name:'Tiếng Việt',translate:'vi',speech:'vi-VN'},
-{name:'Bahasa Indonesia',translate:'id',speech:'id-ID'},
-{name:'Yorùbá',translate:'yo',speech:'yo-NG'},
-{name:'isiZulu',translate:'zu',speech:'zu-ZA'}
-];
-const $=id=>document.getElementById(id);
-let currentPage=1,backStack=[],forwardStack=[],activeRecognition=null,mode='manual',autoSpeaker='A',lastTranslation=null;
-let historyItems=readStore('ibs_pro_history',[]),savedItems=readStore('ibs_pro_saved',[]);
-function readStore(key,fallback){try{const v=JSON.parse(localStorage.getItem(key));return Array.isArray(v)?v:fallback}catch(_){return fallback}}
-function store(){try{localStorage.setItem('ibs_pro_history',JSON.stringify(historyItems));localStorage.setItem('ibs_pro_saved',JSON.stringify(savedItems))}catch(_){}}
-function fillLanguages(id,code){const el=$(id);LANGS.forEach(l=>{const o=document.createElement('option');o.value=l.translate;o.textContent=l.name;if(l.translate===code)o.selected=true;el.appendChild(o)})}
-function language(code){return LANGS.find(l=>l.translate===code)||LANGS[0]}
-function showPage(n,track=true){if(track&&n!==currentPage){backStack.push(currentPage);forwardStack=[]}currentPage=n;for(let i=1;i<=5;i++){$('p'+i).classList.toggle('show',i===n);$('n'+i).classList.toggle('on',i===n)}}
-function goBack(){if(backStack.length){forwardStack.push(currentPage);showPage(backStack.pop(),false)}}
-function goNext(){if(forwardStack.length){backStack.push(currentPage);showPage(forwardStack.pop(),false)}}
-function setMode(m){mode=m;$('manualMode').hidden=m!=='manual';$('autoMode').hidden=m!=='auto';$('modeManualBtn').classList.toggle('selected',m==='manual');$('modeAutoBtn').classList.toggle('selected',m==='auto');$('modeDescription').textContent=m==='manual'?'Chaque personne touche son bouton pour parler. La traduction est affichée puis lue si la voix cible est disponible.':'Mode guidé : une phrase à la fois, traduction et lecture, puis l’autre personne peut répondre.'}
-function swapLanguages(){const a=$('langA').value,b=$('langB').value;$('langA').value=b;$('langB').value=a}
-function saveProfile(){const name=$('profileName').value.trim();if(name){try{localStorage.setItem('ibs_pro_profile',name)}catch(_){}$('profileInfo').textContent=name+' • enregistré sur cet appareil'}$('welcome').hidden=true}
-function editProfile(){$('welcome').hidden=false;showPage(1);$('profileName').focus()}
-function speechAPI(){return window.SpeechRecognition||window.webkitSpeechRecognition}
-function setStatus(id,text){$(id).textContent=text}
-function stopAll(){if(activeRecognition){try{activeRecognition.abort()}catch(_){}activeRecognition=null}if(window.speechSynthesis)window.speechSynthesis.cancel();setStatus('statusAuto','Conversation arrêtée.')}
-function startListening(person,auto=false){
- const SR=speechAPI(),isA=person==='A';
- const statusId=auto?'statusAuto':(isA?'statusA':'statusB');
- if(!SR){setStatus(statusId,'La reconnaissance vocale n’est pas prise en charge par ce navigateur. Essaie Chrome récent.');return}
- if(!window.isSecureContext&&location.hostname!=='localhost'&&location.protocol!=='file:'){setStatus(statusId,'Le microphone nécessite une page sécurisée HTTPS.');return}
- if(activeRecognition){try{activeRecognition.abort()}catch(_){}activeRecognition=null}
- const source=language(isA?$('langA').value:$('langB').value);
- const target=language(isA?$('langB').value:$('langA').value);
- const rec=new SR();activeRecognition=rec;rec.lang=source.speech;rec.continuous=false;rec.interimResults=false;rec.maxAlternatives=1;
- const buttonId=auto?'autoMic':(isA?'micA':'micB');
- $(buttonId).textContent='🔴 ÉCOUTE EN COURS…';setStatus(statusId,'Parle maintenant. Autorise le microphone si le navigateur le demande.');
- rec.onresult=async e=>{
-   const spoken=e.results&&e.results[0]&&e.results[0][0]?e.results[0][0].transcript:'';
-   if(!spoken){setStatus(statusId,'Aucune parole reconnue. Réessaie.');return}
-   if(auto){$('autoOriginal').textContent=spoken;$('autoTranslation').textContent='Traduction en cours…'}
-   else {$(isA?'aOriginal':'bOriginal').textContent=spoken;$(isA?'aTranslation':'bTranslation').textContent='Traduction en cours…'}
-   try{
-     const translated=await translateText(spoken,target.translate);
-     if(auto){$('autoTranslation').textContent=translated}else{$(isA?'aTranslation':'bTranslation').textContent=translated}
-     lastTranslation={source:spoken,translated,from:source.translate,to:target.translate,speaker:person,date:new Date().toISOString()};
-     historyItems.unshift(lastTranslation);historyItems=historyItems.slice(0,100);store();renderHistory();renderSaved();
-     setStatus(statusId,'Traduction terminée : '+source.name+' → '+target.name);
-     speakText(translated,target.speech);
-     if(auto){autoSpeaker=isA?'B':'A';$('nextSpeaker').textContent=autoSpeaker;setStatus(statusId,'Traduction lue si une voix est disponible. À '+autoSpeaker+' de parler : touche le bouton pour continuer.');$('autoMic').textContent='🎙️ ÉCOUTER PERSONNE '+autoSpeaker}
-   }catch(err){setStatus(statusId,err.message||'Échec de la traduction. Vérifie la connexion Internet.');if(auto)$('autoTranslation').textContent=''}
- };
- rec.onerror=e=>{const msgs={'not-allowed':'Accès au microphone refusé. Autorise-le dans les paramètres du navigateur.','no-speech':'Aucune parole détectée. Réessaie.','network':'Erreur réseau de reconnaissance vocale. Vérifie Internet.','language-not-supported':'Cette langue n’est pas prise en charge pour la reconnaissance vocale sur cet appareil.'};setStatus(statusId,msgs[e.error]||('Erreur vocale : '+e.error));};
- rec.onend=()=>{if(activeRecognition===rec)activeRecognition=null;$(buttonId).textContent=auto?'🎙️ ÉCOUTER PERSONNE '+autoSpeaker:(isA?'🎙️ PERSONNE A — PARLER':'🎙️ PERSONNE B — PARLER')};
- try{rec.start()}catch(_){setStatus(statusId,'Impossible de démarrer. Réessaie après quelques secondes.')}
-}
-function startAuto(){startListening(autoSpeaker,true)}
-function toggleAutoSpeaker(){autoSpeaker=autoSpeaker==='A'?'B':'A';$('nextSpeaker').textContent=autoSpeaker;$('autoMic').textContent='🎙️ ÉCOUTER PERSONNE '+autoSpeaker;setStatus('statusAuto','C’est à la personne '+autoSpeaker+' de parler.')}
-async function translateText(text,target){
- const url='https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl='+encodeURIComponent(target)+'&dt=t&q='+encodeURIComponent(text);
- const response=await fetch(url);if(!response.ok)throw new Error('Service de traduction indisponible (HTTP '+response.status+').');
- const data=await response.json();const out=Array.isArray(data[0])?data[0].map(x=>x&&x[0]?x[0]:'').join(''):'';
- if(!out)throw new Error('Aucune traduction reçue. Réessaie.');return out
-}
-function speakText(text,voiceLang){if(!('speechSynthesis'in window)||!text)return;window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang=voiceLang;u.rate=.9;window.speechSynthesis.speak(u)}
-function readResult(id,langId){const t=$(id).textContent.trim();if(!t){alert('Fais d’abord une traduction.');return}const l=language($(langId).value);speakText(t,l.speech)}
-function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function renderHistory(){const box=$('historyList');if(!historyItems.length){box.innerHTML='<div class="card">Aucune traduction enregistrée.</div>';return}box.innerHTML=historyItems.map((x,i)=>'<div class="card"><b>Personne '+esc(x.speaker)+'</b><p class="result">'+esc(x.source)+'</p><p class="result" style="color:#b7f5ff">→ '+esc(x.translated)+'</p><p class="small">'+esc(language(x.from).name)+' → '+esc(language(x.to).name)+'</p><button class="btn" onclick="saveHistory('+i+')">🔖 Ajouter aux favoris</button></div>').join('')}
-function renderSaved(){const box=$('savedList');if(!savedItems.length){box.innerHTML='<div class="card">Aucun favori pour le moment.</div>';return}box.innerHTML=savedItems.map(x=>'<div class="card"><b>Personne '+esc(x.speaker)+'</b><p class="result">'+esc(x.source)+'</p><p class="result" style="color:#b7f5ff">→ '+esc(x.translated)+'</p><p class="small">'+esc(language(x.from).name)+' → '+esc(language(x.to).name)+'</p></div>').join('')}
-function saveHistory(i){const x=historyItems[i];if(x&&!savedItems.some(y=>y.date===x.date)){savedItems.unshift(x);store();renderSaved()}alert('Traduction sauvegardée si elle n’était pas déjà dans les favoris.')}
-function saveLast(){if(!lastTranslation){alert('Fais d’abord une traduction.');return}if(!savedItems.some(x=>x.date===lastTranslation.date))savedItems.unshift(lastTranslation);store();renderSaved();alert('Dernière traduction sauvegardée.')}
-function clearHistory(){if(confirm('Effacer tout l’historique ?')){historyItems=[];store();renderHistory()}}
-function clearSaved(){if(confirm('Effacer tous les favoris ?')){savedItems=[];store();renderSaved()}}
-function clearAllData(){if(!confirm('Effacer le profil, l’historique et les favoris de cet appareil ?'))return;['ibs_pro_profile','ibs_pro_history','ibs_pro_saved'].forEach(k=>localStorage.removeItem(k));historyItems=[];savedItems=[];lastTranslation=null;$('profileInfo').textContent='Aucun nom enregistré.';$('welcome').hidden=false;$('profileName').value='';renderHistory();renderSaved();alert('Données locales effacées.')}
-function downloadHtml(){const blob=new Blob(['<!DOCTYPE html>\\n'+document.documentElement.outerHTML],{type:'text/html;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='IBS_TRADUCTION_PRO.html';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000)}
-async function shareApp(){const data={title:'IBS TRADUCTION',text:'IBS TRADUCTION — prototype par Isaac BabySon',url:location.href};try{if(navigator.share&&/^https?:$/.test(location.protocol))await navigator.share(data);else if(navigator.clipboard&&/^https?:$/.test(location.protocol)){await navigator.clipboard.writeText(location.href);alert('Adresse copiée. Envoie-la à tes contacts.')}else{window.open('https://wa.me/?text='+encodeURIComponent(data.text+' — Publie le fichier sur Internet pour obtenir un lien partageable.'),'_blank','noopener')}}catch(e){if(e.name!=='AbortError')alert('Le partage a échoué. Réessaie.')}}
-function contactWhatsApp(){window.open('https://wa.me/?text='+encodeURIComponent('Bonjour, je souhaite des informations sur IBS TRADUCTION.'),'_blank','noopener')}
-function init(){fillLanguages('langA','en');fillLanguages('langB','fr');renderHistory();renderSaved();try{const n=localStorage.getItem('ibs_pro_profile');if(n){$('profileInfo').textContent=n+' • enregistré sur cet appareil';$('profileName').value=n;$('welcome').hidden=true}}catch(_){}}
-init();
-</script>
-<script>
-if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js').catch(() => {}));
-}
+var cur=1,hist=[],fut=[],currentUser=null,lastOrigTop="",lastTransTop="",lastOrigBot="",lastTransBot="";
+function show(n){var old=cur;hist.push(old);cur=n;for(var i=1;i<=5;i++){document.getElementById('p'+i).classList.remove('show');document.getElementById('b'+i).classList.remove('on');}document.getElementById('p'+n).classList.add('show');document.getElementById('b'+n).classList.add('on');fut=[];}
+function goBack(){if(hist.length>0){fut.push(cur);var pr=hist.pop();cur=pr;for(var i=1;i<=5;i++){document.getElementById('p'+i).classList.remove('show');document.getElementById('b'+i).classList.remove('on');}document.getElementById('p'+pr).classList.add('show');document.getElementById('b'+pr).classList.add('on');}}
+function goNext(){if(fut.length>0){var nx=fut.pop();hist.push(cur);cur=nx;for(var i=1;i<=5;i++){document.getElementById('p'+i).classList.remove('show');document.getElementById('b'+i).classList.remove('on');}document.getElementById('p'+nx).classList.add('show');document.getElementById('b'+nx).classList.add('on');}}
+function downApp(){var h=document.documentElement.outerHTML;var b=new Blob([h],{type:'text/html'});var u=URL.createObjectURL(b);var a=document.createElement('a');a.href=u;a.download='IBS_TRADUCTION_PRO.html';a.click();}
+function shareApp(){var txt=encodeURIComponent('🌍 IBS TRADUCTION 1000+ PRO - Isaac BabySon Goma: https://isaac-babyson.github.io/IBS-TRADUCTION/');window.open('https://wa.me/?text='+txt,'_blank'); if(currentUser){addPoints(5);} }
+function setTab(t){if(t==='login'){document.getElementById('loginForm').style.display='block';document.getElementById('regForm').style.display='none';document.getElementById('tabLogin').style.background='#2f6fdc';document.getElementById('tabReg').style.background='rgba(255,255,255,.12)';}else{document.getElementById('loginForm').style.display='none';document.getElementById('regForm').style.display='block';document.getElementById('tabReg').style.background='#2f6fdc';document.getElementById('tabLogin').style.background='rgba(255,255,255,.12)';}}
+function getUsers(){try{return JSON.parse(localStorage.getItem('ibs_users')||'[]');}catch(e){return [];}}
+function saveUsers(u){localStorage.setItem('ibs_users',JSON.stringify(u));}
+function addPoints(n){if(!currentUser) return; currentUser.points=(currentUser.points||0)+n; let users=getUsers(); let idx=users.findIndex(x=>x.phone===currentUser.phone); if(idx>=0){users[idx].points=currentUser.points; saveUsers(users);} localStorage.setItem('ibs_current',JSON.stringify(currentUser)); updatePointsUI();}
+function updatePointsUI(){if(!currentUser) return; document.getElementById('points').innerText=currentUser.points+' pts'; document.getElementById('accPoints').innerText=currentUser.points+' pts'; if(currentUser.points>=100){document.getElementById('badgePro').innerText='👑 PRO VÉRIFIÉ';document.getElementById('badgePro').style.background='gold';document.getElementById('badgePro').style.color='#000';}}
+function genCode(phone){return 'IBS-'+(phone.slice(-4)||Math.floor(1000+Math.random()*9000))+'-'+Math.floor(10+Math.random()*90);}
+function registerUser(){var n=document.getElementById('rName').value.trim();var p=document.getElementById('rPhone').value.trim();var pw=document.getElementById('rPass').value.trim();var l=document.getElementById('rLang').value;if(!n||!p||!pw){alert('Remplis tout');return;}var users=getUsers();if(users.find(function(x){return x.phone===p;})){alert('Existe déjà');setTab('login');return;}var code=genCode(p);var user={name:n,phone:p,pass:pw,lang:l,date:new Date().toLocaleDateString(),code:code,points:100,avatar:n.substring(0,2).toUpperCase(),photo:null,hist:[],save:[]};users.push(user);saveUsers(users);currentUser=user;localStorage.setItem('ibs_current',JSON.stringify(user));afterLogin();alert('✅ Compte PRO créé +100 pts Code '+code);}
+function loginUser(){var p=document.getElementById('lPhone').value.trim();var pw=document.getElementById('lPass').value.trim();var users=getUsers();var u=users.find(function(x){return x.phone===p && x.pass===pw;});if(!u){alert('Incorrect');return;}currentUser=u;localStorage.setItem('ibs_current',JSON.stringify(u));afterLogin();}
+function afterLogin(){if(!currentUser) return;document.getElementById('splash').style.display='none';document.getElementById('hello').innerText='Bonjour '+currentUser.name+' ● '+currentUser.points+'pts';document.getElementById('profileName').innerText=currentUser.name;document.getElementById('profilePhone').innerText=currentUser.phone;document.getElementById('profileCode').innerText='Code: '+currentUser.code;document.getElementById('refCode').innerText=currentUser.code;document.getElementById('accName').innerText=currentUser.name;document.getElementById('accPhone').innerText=currentUser.phone;document.getElementById('accCode').innerText=currentUser.code;document.getElementById('accPoints').innerText=currentUser.points+' pts';document.getElementById('points').innerText=currentUser.points+' pts';if(currentUser.photo){document.getElementById('profileAvatar').innerHTML='<img src="'+currentUser.photo+'" style="width:100%;height:100%;object-fit:cover">';}else{document.getElementById('profileAvatar').innerText=currentUser.avatar||'IB';}if(currentUser.points>=100){document.getElementById('badgePro').innerText='👑 PRO VÉRIFIÉ';document.getElementById('badgePro').style.background='gold';document.getElementById('badgePro').style.color='#000';}refreshClients();}
+function logout(){localStorage.removeItem('ibs_current');currentUser=null;location.reload();}
+function refreshClients(){var users=getUsers();document.getElementById('clientCount').innerText=users.length;var html='';users.forEach(function(u){var photo=u.photo?'<img src="'+u.photo+'" style="width:100%;height:100%;object-fit:cover">':u.avatar;html+='<div class="row"><div style="display:flex;gap:8px;align-items:center"><div class="avatar" style="width:34px;height:34px;font-size:12px">'+photo+'</div><div><b style="font-size:12px">'+u.name+'</b><br><small style="color:#8aa0c8">'+u.phone+' • '+u.points+'pts</small></div></div><span class="badge" style="background:#2d7d5a">●</span></div>';});document.getElementById('clientList').innerHTML=html||'<small>Aucun client</small>';}
+function saveLast(){if(!currentUser){alert('Crée compte');setTab('reg');return;}var o=lastOrigBot||document.getElementById('origBot').innerText;var t=lastTransBot||document.getElementById('transBot').innerText;var o2=lastOrigTop||document.getElementById('origTop').innerText;var t2=lastTransTop||document.getElementById('transTop').innerText;var finalO=o||o2;var finalT=t||t2;if(!finalT){alert('Traduis d abord');return;}var users=getUsers();var idx=users.findIndex(function(x){return x.phone===currentUser.phone;});if(idx>=0){users[idx].save=users[idx].save||[];users[idx].save.unshift({o:finalO,t:finalT,d:new Date().toLocaleTimeString()});users[idx].points=(users[idx].points||0)+10;saveUsers(users);currentUser=users[idx];localStorage.setItem('ibs_current',JSON.stringify(currentUser));afterLogin();}var d=document.getElementById('save');var card='<div class="card"><b>'+finalO+'</b><br>→ <span style="color:#7ab3ff">'+finalT+'</span></div>';if(d.innerHTML.includes('Aucun')) d.innerHTML=card; else d.innerHTML=card+d.innerHTML;alert('Sauvegardé +10 pts');}
+async function trans(txt,to){try{var url='https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl='+to+'&dt=t&q='+encodeURIComponent(txt);var r=await fetch(url);var j=await r.json();return j[0].map(function(x){return x[0];}).join('');}catch(e){return txt;}}
+function speak(text,lang){speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(text);u.lang=lang;u.rate=0.95;speechSynthesis.speak(u);}
+function speakTop(){var t=document.getElementById('transTop').innerText||document.getElementById('origTop').innerText;speak(t,'fr-FR');}
+function speakBot(){var t=document.getElementById('transBot').innerText||document.getElementById('origBot').innerText;speak(t,'en-US');}
+function listen(lang,cb,onEnd){var SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){alert('Ouvre dans Chrome');return;}var rec=new SR();rec.lang=lang;rec.interimResults=false;rec.onresult=function(e){cb(e.results[0][0].transcript);};rec.onerror=function(){onEnd();};rec.onend=function(){onEnd();};rec.start();}
+function startTop(){var b=document.getElementById('micTop');b.classList.add('rec');b.innerText='🔴 ÉCOUTE...';listen('en-US',function(txt){document.getElementById('origTop').innerText=txt;lastOrigTop=txt;trans(txt,'fr').then(function(tr){document.getElementById('transTop').innerText=tr;lastTransTop=tr;speak(tr,'fr-FR');addToHistory(txt,tr);});},function(){b.classList.remove('rec');b.innerText='🎙️ OTHER PERSON - PARLER';});}
+function startBot(){var b=document.getElementById('micBot');b.classList.add('rec');b.innerText='🔴 NAZO YOKA...';listen('fr-FR',function(txt){document.getElementById('origBot').innerText=txt;lastOrigBot=txt;trans(txt,'en').then(function(tr){document.getElementById('transBot').innerText=tr;lastTransBot=tr;speak(tr,'en-US');addToHistory(txt,tr);});},function(){b.classList.remove('rec');b.innerText='🎙️ TIA NA LOBA - MOI';});}
+function addToHistory(o,t){var h=document.getElementById('hist');var card='<div class="card"><b>'+o+'</b><br>→ <span style="color:#7ab3ff">'+t+'</span></div>';if(h.innerHTML.includes('Aucune')) h.innerHTML=card; else h.innerHTML=card+h.innerHTML; if(currentUser){let users=getUsers();let idx=users.findIndex(x=>x.phone===currentUser.phone);if(idx>=0){users[idx].hist=users[idx].hist||[];users[idx].hist.unshift({o:o,t:t,d:new Date().toLocaleTimeString()});users[idx].points=(users[idx].points||0)+5;saveUsers(users);currentUser=users[idx];localStorage.setItem('ibs_current',JSON.stringify(currentUser));updatePointsUI();}}}
+function uploadPhoto(input){const file=input.files[0];if(!file)return;const reader=new FileReader();reader.onload=function(e){const base64=e.target.result;document.getElementById('profileAvatar').innerHTML='<img src="'+base64+'" style="width:100%;height:100%;object-fit:cover">';if(currentUser){let cur=currentUser;cur.photo=base64;cur.points=(cur.points||0)+20;localStorage.setItem('ibs_current',JSON.stringify(cur));let users=getUsers();let idx=users.findIndex(x=>x.phone===cur.phone);if(idx>=0){users[idx].photo=base64;users[idx].points=cur.points;saveUsers(users);}afterLogin();alert('✅ Photo +20 pts');}};reader.readAsDataURL(file);}
+function exportAccount(){let cur=localStorage.getItem('ibs_current');if(!cur){alert('Crée compte');return;}let data=JSON.parse(cur);let blob=new Blob([cur],{type:'application/json'});let url=URL.createObjectURL(blob);let a=document.createElement('a');a.href=url;a.download='IBS-COMPTE-'+data.phone+'-'+data.code+'.ibs';a.click();}
+function importAccount(input){const file=input.files[0];if(!file)return;const reader=new FileReader();reader.onload=function(e){try{const data=JSON.parse(e.target.result);localStorage.setItem('ibs_current',JSON.stringify(data));let users=getUsers();let idx=users.findIndex(x=>x.phone===data.phone);if(idx>=0)users[idx]=data;else users.push(data);saveUsers(users);alert('✅ Importé '+data.name);location.reload();}catch(err){alert('Fichier invalide');}};reader.readAsText(file);}
+window.onload=function(){var cur=localStorage.getItem('ibs_current');if(cur){try{currentUser=JSON.parse(cur);afterLogin();}catch(e){}}refreshClients();}
 </script>
 </body>
-</html>
+                                             </html>
