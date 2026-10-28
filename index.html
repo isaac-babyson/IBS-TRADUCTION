@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>IBS TRADUCTION 1000+ - Isaac - A+B Propre</title>
+<title>IBS TRADUCTION 1000+ - Isaac - Fixed V5 - 5000pts Badge</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#f0f2f5;font-family:system-ui;color:#111;overflow-x:hidden}
@@ -28,8 +28,10 @@ body{background:#f0f2f5;font-family:system-ui;color:#111;overflow-x:hidden}
 .photo-video-actions button{flex:1;padding:10px;border-radius:20px;border:none;background:#e4e6eb;font-weight:700;display:flex;align-items:center;justify-content:center;gap:6px;font-size:13px}
 .card{border-radius:12px;padding:14px;background:#fff;border:1px solid #ddd;margin:8px 10px}
 .card.dark{background:#0f1a33;color:#fff;border:none}
-.mic{width:100%;height:52px;border-radius:28px;border:none;background:#0866ff;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center}
+.mic{width:100%;height:52px;border-radius:28px;border:none;background:#0866ff;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;transition:all .2s}
 .mic.green{background:#00a400}
+.mic.rec{background:#ff3344;animation:pulse 1s infinite}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
 .input{width:100%;padding:12px;border-radius:8px;border:1px solid #ddd;background:#fff;color:#111;margin:6px 0}
 .btn{width:100%;padding:12px;border-radius:8px;border:none;background:#0866ff;color:#fff;font-weight:900;margin:6px 0}
 .badge{padding:5px 10px;border-radius:20px;font-size:11px;font-weight:900;background:#0866ff;color:#fff}
@@ -51,6 +53,7 @@ body{background:#f0f2f5;font-family:system-ui;color:#111;overflow-x:hidden}
 .search-bar.show{display:flex}
 .search-bar input{flex:1;background:#f0f2f5;border:none;border-radius:20px;padding:12px 14px}
 .realtime{width:8px;height:8px;background:#31a24c;border-radius:50%;display:inline-block}
+.row{padding:12px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;cursor:pointer;background:#fff}
 </style>
 </head>
 <body>
@@ -59,21 +62,20 @@ body{background:#f0f2f5;font-family:system-ui;color:#111;overflow-x:hidden}
 <div style="text-align:center">
 <div style="font-size:48px">🌍</div>
 <h2 style="margin-top:8px">IBS TRADUCTION 1000+</h2>
-<p style="color:#65676b;font-size:12px;margin-top:6px">Chaque client crée son propre compte<br>Plus de compte Isaac seul pour tout le monde</p>
-<div style="margin-top:10px;background:#e7f3ff;padding:8px 12px;border-radius:20px;font-size:11px;color:#0064d1;font-weight:700;display:inline-block"><span class="realtime"></span> Créé par ISAAC BABYSON GUY • Goma</div>
+<p style="color:#65676b;font-size:12px;margin-top:6px">Chaque client son propre compte<br>1000+ langues temps réel mondial</p>
+<div style="margin-top:10px;background:#e7f3ff;padding:8px 12px;border-radius:20px;font-size:11px;color:#0064d1;font-weight:700;display:inline-block"><span class="realtime"></span> Créé par ISAAC BABYSON GUY</div>
 </div>
 <div id="existingAccounts" style="margin-top:16px"></div>
 <div style="border-top:1px solid #eee;margin-top:16px;padding-top:16px">
-<b style="font-size:14px">✨ Nouveau client - Crée ton compte perso</b>
-<p style="font-size:11px;color:#65676b;margin-top:4px">Ton compte perso avec tes points, ton badge, tes publications</p>
+<b style="font-size:14px">✨ Nouveau client - Crée ton compte</b>
 <div style="text-align:center;margin-top:12px">
 <div id="welcomeAvatar" class="avatar gold" style="width:72px;height:72px;font-size:24px;margin:0 auto">?</div>
 <input type="file" id="welcomePhoto" accept="image/*" style="display:none" onchange="previewWelcomePhoto(this)">
 <button onclick="document.getElementById('welcomePhoto').click()" style="margin-top:8px;padding:6px 12px;border-radius:20px;border:none;background:#e7f3ff;color:#0064d1;font-size:12px;font-weight:700">📸 Ma photo</button>
 </div>
-<input id="welcomeName" class="input" placeholder="Ton nom complet * (ex: Eliya Rusangiza)">
+<input id="welcomeName" class="input" placeholder="Ton nom complet *">
 <select id="welcomeLang" class="input">
-<option value="fr">Français - Lingala</option>
+<option value="fr">Français</option>
 <option value="ln">Lingala - Goma</option>
 <option value="sw">Swahili - Goma</option>
 <option value="en">English</option>
@@ -81,148 +83,8 @@ body{background:#f0f2f5;font-family:system-ui;color:#111;overflow-x:hidden}
 </select>
 <button class="btn" style="background:linear-gradient(135deg,#0866ff,#00a400);margin-top:12px" onclick="createAccount()">✨ CRÉER MON COMPTE +50pts</button>
 <div style="margin-top:10px;text-align:center">
-<button onclick="loginAsAdmin()" style="width:100%;padding:10px;border-radius:20px;border:1px solid gold;background:#fff8dc;color:#000;font-weight:700;font-size:12px">👑 Je suis Isaac (Admin 0840981930)</button>
+<button onclick="loginAsAdmin()" style="width:100%;padding:10px;border-radius:20px;border:1px solid gold;background:#fff8dc;color:#000;font-weight:700;font-size:12px">👑 Je suis Isaac (Admin)</button>
 </div>
-<small style="display:block;margin-top:10px;text-align:center;color:#65676b;font-size:10px">Code privé IBS-**** caché comme Facebook<br>1000pts pour badge vérifié ★<br>Sans numéros sketch - propre mondial</small>
-</div>
-</div>
-</div>
-<div class="app">
-<div class="top">
-<div class="top-left">
-<div class="avatar gold" id="topAvatar" style="width:36px;height:36px;font-size:14px">IB</div>
-<div class="ibs-logo">IBS<br><span>TRADUCTION</span></div>
-<div style="margin-left:6px;font-size:11px;color:#31a24c;font-weight:700"><span class="realtime"></span> Temps réel</div>
-</div>
-<div class="top-actions">
-<button onclick="publishModal()">+</button>
-<button onclick="toggleSearch()">🔍</button>
-<button onclick="openSettings()">☰</button>
-</div>
-</div>
-<div class="search-bar" id="searchBar">
-<input id="googleInput" placeholder="🔍 Recherche Google IA - Traduction, photo, amis..." onkeypress="if(event.key==='Enter') doSearch()">
-<button onclick="doSearch()" style="padding:10px 16px;border-radius:20px;border:none;background:#0866ff;color:#fff;font-weight:800">OK</button>
-<button onclick="toggleSearch()" style="width:36px;height:36px;border-radius:50%;border:none;background:#e4e6eb">✕</button>
-</div>
-<div class="icons-bar">
-<button class="icon on" id="i1" onclick="goPage(1)">🏠</button>
-<button class="icon" id="i2" onclick="goPage(2)">👥</button>
-<button class="icon" id="i3" onclick="goPage(3)">💬</button>
-<button class="icon" id="i4" onclick="goPage(4)">📺</button>
-<button class="icon" id="i5" onclick="goPage(5)">🔔</button>
-<button class="icon" id="i6" onclick="goPage(6)">🛒</button>
-</div>
-<div class="page show" id="p1">
-<div class="profile-top">
-<div class="avatar-big gold" id="profileAvatarBig">IB</div>
-<div style="flex:1">
-<div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
-<b id="profileName" style="font-size:16px">Mon Compte</b>
-<span class="verified-badge" id="profileBadge">★</span>
-</div>
-<div style="font-size:12px;color:#65676b;margin-top:2px"><span id="liveTime">Temps réel</span> • <span id="pointsTop">0 /1000pts</span> • <span id="profileCode">IBS-****</span></div>
-<div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap">
-<span class="badge gold" id="badgeGold">★</span>
-<span class="badge" style="background:#00a400">1000+ Langues</span>
-<span class="badge" style="background:#31a24c"><span class="realtime"></span> Mon compte perso</span>
-</div>
-<div style="display:flex;gap:8px;margin-top:10px">
-<input type="file" id="photoInput" accept="image/*" style="display:none" onchange="uploadPhoto(this)">
-<button onclick="document.getElementById('photoInput').click()" style="padding:8px 12px;border-radius:20px;border:none;background:#e7f3ff;color:#0064d1;font-weight:700;font-size:12px">📸 Changer photo</button>
-<button onclick="switchAccount()" style="padding:8px 12px;border-radius:20px;border:1px solid #ddd;background:#fff;font-weight:700;font-size:12px">🔄 Changer compte</button>
-</div>
-<div style="display:flex;gap:8px;margin-top:8px">
-<input id="editNameInput" class="input" placeholder="Modifier mon nom" style="margin:0;flex:1;padding:8px 12px;font-size:13px">
-<button onclick="saveProfileName()" style="padding:8px 12px;border-radius:20px;border:none;background:#0866ff;color:#fff;font-weight:800;font-size:12px">💾</button>
 </div>
 </div>
   </div>
-  <div class="composer">
-<div class="composer-row">
-<div class="avatar gold" id="composerAvatar">IB</div>
-<input id="postTextInput" placeholder="À quoi penses-tu ? Photo, vidéo, traduction..." onclick="publishModal()">
-</div>
-<div class="photo-video-actions">
-<input type="file" id="publishFile" accept="image/*,video/*" style="display:none" onchange="previewPublish(this)">
-<button class="photo" onclick="document.getElementById('publishFile').click()">🖼️ Photo</button>
-<button class="video" onclick="document.getElementById('publishFile').click()">🎥 Vidéo</button>
-<button style="background:#e7f3ff;color:#0064d1" onclick="publishModal()">📝 Publier</button>
-</div>
-<div id="previewArea" style="margin-top:10px;display:none"><img id="previewImg" style="width:100%;border-radius:12px;max-height:300px;object-fit:cover"><video id="previewVideo" style="width:100%;border-radius:12px;max-height:300px;display:none" controls></video><button onclick="clearPreview()" style="margin-top:6px;padding:6px 12px;border-radius:20px;border:1px solid #ddd;background:#fff;font-size:12px">✕ Supprimer</button></div>
-</div>
-<div class="card" style="border:2px solid #0866ff">
-<b style="font-size:13px">🌍 LANGUES - 1000+ - Mon compte perso</b>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
-<select id="langOther" class="input" style="margin:0" onchange="changeLangs()"></select>
-<select id="langToOther" class="input" style="margin:0" onchange="changeLangs()"></select>
-<select id="langMe" class="input" style="margin:0" onchange="changeLangs()"></select>
-<select id="langToMe" class="input" style="margin:0" onchange="changeLangs()"></select>
-</div>
-<button class="btn" style="margin-top:8px;background:#00a400" onclick="saveLangs()">💾 SAUVEGARDER</button>
-</div>
-<div class="card dark" style="background:linear-gradient(135deg,#0866ff,#00a400)"><div style="font-size:11px;font-weight:800;display:flex;justify-content:space-between"><span>OTHER PERSON</span><span id="fromLang">Auto</span> → <span id="toLang">Français</span></div><div id="origTop" style="margin-top:10px">how are you</div><div id="transTop" style="color:#e0ffe0;margin-top:6px;font-weight:700"></div><div style="display:flex;gap:8px;margin-top:12px"><button class="mic" id="micTop" onclick="startTop()">🎙️ PARLER</button><button onclick="speakTop()" style="width:56px;border-radius:28px;border:2px solid #fff;background:rgba(255,255,255,.2);color:#fff">🔊</button></div></div>
-<div class="card dark" style="background:#0f1a33"><div style="font-size:11px;font-weight:800;display:flex;justify-content:space-between;color:#8aa0c8"><span>MOI - <span id="meName">MOI</span></span><span id="fromLang2">Lingala</span> → <span id="toLang2">English</span></div><div id="origBot" style="margin-top:10px">ganaza bien vraiment</div><div id="transBot" style="color:#aef5ff;margin-top:6px;font-weight:700"></div><div style="display:flex;gap:8px;margin-top:12px"><button class="mic green" id="micBot" onclick="startBot()">🎙️ MOI - PARLER</button><button onclick="speakBot()" style="width:56px;border-radius:28px;border:2px solid #fff;background:rgba(255,255,255,.15);color:#fff">🔊</button></div></div>
-<div id="feed"></div>
-</div>
-<div class="page" id="p2"><h3 style="padding:12px;background:#fff">👥 Clients - Chaque client son compte</h3><div id="clientList"></div></div>
-<div class="page" id="p3"><h3 style="padding:12px;background:#fff">💬 Messages - Mon compte</h3><div id="msgList"></div></div>
-<div class="page" id="p4"><h3 style="padding:12px;background:#fff">📺 Audio/Vidéo</h3><div id="avList"></div></div>
-<div class="page" id="p5"><h3 style="padding:12px;background:#fff">🔔 Notifications - Mon compte</h3><div id="notifList"></div></div>
-<div class="page" id="p6"><h3 style="padding:12px;background:#fff">🛒 Boutique - Mes points</h3><div id="shopList"></div></div>
-</div>
-<div class="modal" id="settingsModal" onclick="closeSettings()"><div class="modal-box" onclick="event.stopPropagation()"><div class="modal-header"><span>☰ Paramètres - IBS</span><button onclick="closeSettings()" style="width:36px;height:36px;border-radius:50%;border:none;background:#e4e6eb">✕</button></div><div class="modal-content" id="settingsContent"></div></div></div>
-<div class="modal" id="modal" onclick="closeModal()"><div class="modal-box" onclick="event.stopPropagation()"><div class="modal-header"><span id="modalTitle">IBS</span><button onclick="closeModal()" style="width:36px;height:36px;border-radius:50%;border:none;background:#e4e6eb">✕</button></div><div class="modal-content" id="modalBox"></div></div></div>
-<div class="modal" id="chatModal" onclick="closeChat()"><div class="modal-box" style="padding:0;height:85vh" onclick="event.stopPropagation()"><div id="chatBox" style="height:100%;display:flex;flex-direction:column"></div></div></div>
-<script>
-var curPage=1;
-var accounts=JSON.parse(localStorage.getItem('ibs_accounts_v4')||'[]');
-var currentUser=JSON.parse(localStorage.getItem('ibs_current_v4')||'null');
-var posts=JSON.parse(localStorage.getItem('ibs_posts_v4')||'[]');
-var chats=JSON.parse(localStorage.getItem('ibs_chats_v4')||'[]');
-var notifs=JSON.parse(localStorage.getItem('ibs_notifs_v4')||'[]');
-var appHistory=JSON.parse(localStorage.getItem('ibs_history_v4')||'[]');
-var publishMedia=null;var publishMediaType=null;var welcomePhotoData=null;
-var ALL_LANGS=[["auto","🌍 Auto 1000+ langues"],["fr","Français"],["ln","Lingala - Goma"],["sw","Swahili - Goma"],["en","English"]];
-function isAdmin(u){return u && (u.name&&u.name.toUpperCase().includes("ISAAC BABYSON GUY") || u.isAdmin);}
-function showWelcome(){
-var div=document.getElementById('existingAccounts');
-if(accounts.length>0){
-var h='<b style="font-size:12px">👥 Comptes sur cet appareil - Choisis le tien :</b><div style="margin-top:8px">';
-accounts.forEach(function(a,i){
-h+='<div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:10px;margin:6px 0;display:flex;gap:10px;align-items:center"><div class="avatar '+(isAdmin(a)?'gold':'')+'" style="width:44px;height:44px">'+(a.photo?'<img src="'+a.photo+'" style="width:100%;height:100%;object-fit:cover">':a.avatar)+'</div><div style="flex:1"><b>'+a.name+' '+(isAdmin(a)?'★':'')+'</b><br><small style="color:#65676b">'+a.points+'/1000pts • '+a.code+'</small></div><button onclick="selectAccount('+i+')" style="padding:8px 12px;border-radius:20px;border:none;background:#0866ff;color:#fff;font-weight:700">Choisir</button></div>';
-});h+='</div>';div.innerHTML=h;
-} else {div.innerHTML='<div style="background:#e7f3ff;border-radius:12px;padding:10px;text-align:center"><small style="color:#0064d1">Aucun compte ici - Crée ton compte perso ci-dessous</small></div>';}
-document.getElementById('welcomeScreen').classList.add('show');
-}
-function hideWelcome(){document.getElementById('welcomeScreen').classList.remove('show');}
-function previewWelcomePhoto(input){var f=input.files[0];if(!f) return;var r=new FileReader();r.onload=function(e){welcomePhotoData=e.target.result;document.getElementById('welcomeAvatar').innerHTML='<img src="'+e.target.result+'" style="width:100%;height:100%;object-fit:cover">';};r.readAsDataURL(f);}
-function createAccount(){
-var name=document.getElementById('welcomeName').value.trim();
-if(!name){alert('Écris ton nom *');return;}
-var code='IBS-'+Math.floor(1000+Math.random()*9000)+'-'+Math.floor(10+Math.random()*90);
-var avatar=name.substring(0,2).toUpperCase();
-var u={id:Date.now(),name:name,points:50,code:code,avatar:avatar,photo:welcomePhotoData||null,isAdmin:name.toUpperCase().includes("ISAAC BABYSON GUY"),langs:{other:"auto",me:document.getElementById('welcomeLang').value,toOther:"fr",toMe:"en"}};
-accounts.push(u);localStorage.setItem('ibs_accounts_v4',JSON.stringify(accounts));currentUser=u;localStorage.setItem('ibs_current_v4',JSON.stringify(u));hideWelcome();loadUser();
-}
-function selectAccount(i){var a=accounts[i];currentUser=a;localStorage.setItem('ibs_current_v4',JSON.stringify(a));hideWelcome();loadUser();}
-function loginAsAdmin(){
-var admin=accounts.find(function(a){return isAdmin(a);});
-if(admin){selectAccount(accounts.indexOf(admin));return;}
-var adm={id:1,name:"ISAAC BABYSON GUY",points:120,code:"IBS-1930-66",avatar:"IB",photo:null,isAdmin:true,langs:{other:"auto",me:"ln",toOther:"fr",toMe:"en"}};
-accounts.push(adm);localStorage.setItem('ibs_accounts_v4',JSON.stringify(accounts));currentUser=adm;localStorage.setItem('ibs_current_v4',JSON.stringify(adm));hideWelcome();loadUser();
-}
-function switchAccount(){showWelcome();}
-function loadUser(){
-if(!currentUser){showWelcome();return;}
-document.getElementById('profileName').innerText=currentUser.name;
-document.getElementById('profileAvatarBig').innerHTML=currentUser.photo?'<img src="'+currentUser.photo+'" style="width:100%;height:100%;object-fit:cover">':currentUser.avatar;
-document.getElementById('topAvatar').innerHTML=currentUser.photo?'<img src="'+currentUser.photo+'" style="width:100%;height:100%;object-fit:cover">':currentUser.avatar;
-document.getElementById('composerAvatar').innerHTML=currentUser.photo?'<img src="'+currentUser.photo+'" style="width:100%;height:100%;object-fit:cover">':currentUser.avatar;
-document.getElementById('profileCode').innerText=currentUser.code;
-}
-function goPage(n){curPage=n;for(var i=1;i<=6;i++){var e=document.getElementById('p'+i);if(e) e.classList.remove('show');var ic=document.getElementById('i'+i);if(ic) ic.classList.remove('on');}document.getElementById('p'+n).classList.add('show');document.getElementById('i'+n).classList.add('on');}
-window.onload=function(){if(!currentUser){showWelcome();} else {loadUser();}};
-</script>
-</body>
-</html>
